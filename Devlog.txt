@@ -1,0 +1,34 @@
+Day 1 
+
+Implemented the basic player movement and camera movement
+
+Day 2
+
+Imported assets for guns and programmed the shooting mechanism
+
+Day 3
+Optimized shooting to include raycast and instantiate bullet
+
+Day 4 
+Bullet impact effects and vase dummy used to simulate shooting range
+
+Day 5
+Weapon animation Idle Reload and muzzle effects
+
+Day 6
+Reloading Scripting and AK47 Added
+
+Day 7
+Weapon Pickup, Weapon Clipping and Ammo pickup implemented
+
+Day 8
+More on ammo (globalization) and ADS added with animation
+
+Day 9
+Tactical and Lethal Grenades added. Solved the UI issues and enhanced HUD
+
+Day 10
+Break
+
+Day 11
+Zombie model, script and animation added.
