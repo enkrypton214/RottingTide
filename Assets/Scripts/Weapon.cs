@@ -66,9 +66,9 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {   if(isActiveWeapon){
-
         foreach (Transform child in transform)
             {
+
                 child.gameObject.layer=LayerMask.NameToLayer("WeaponRender");
             }
 

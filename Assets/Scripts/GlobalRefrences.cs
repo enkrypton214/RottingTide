@@ -7,6 +7,7 @@ public class GlobalRefrences : MonoBehaviour
     public GameObject bulletImpactEffect;
     public GameObject grenadeExplosionEffect;
     public GameObject smokeGrenadeEffect;
+    public GameObject bloodSprayEffect;
 
     private void Awake()
     {

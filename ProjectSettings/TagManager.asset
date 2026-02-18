@@ -7,6 +7,8 @@ TagManager:
   - Target
   - Wall
   - Zombie
+  - Waypoint
+  - ZombieHand
   layers:
   - Default
   - TransparentFX

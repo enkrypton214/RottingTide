@@ -32,6 +32,12 @@ public class InteractionManager : MonoBehaviour
          GameObject objectHitByRaycast= hit.transform.gameObject;
             if (objectHitByRaycast.GetComponentInParent<Weapon>() && objectHitByRaycast.GetComponentInParent<Weapon>().isActiveWeapon ==false)
             {
+
+                if(hoveredWeapon)
+                {
+                    hoveredWeapon.GetComponentInParent<Outline>().enabled = false;
+                }
+
                 hoveredWeapon = objectHitByRaycast.gameObject.GetComponentInParent<Weapon>();
                 hoveredWeapon.GetComponentInParent<Outline>().enabled=true;
                 if(Input.GetKeyDown(KeyCode.E))
@@ -50,6 +56,11 @@ public class InteractionManager : MonoBehaviour
             if (objectHitByRaycast.GetComponentInParent<AmmoBox>())
             
             {
+                if(hoveredAmmoBox)
+                {
+                    hoveredAmmoBox.GetComponent<Outline>().enabled = false;
+                }
+
                 hoveredAmmoBox = objectHitByRaycast.gameObject.GetComponent<AmmoBox>();
                 hoveredAmmoBox.GetComponent<Outline>().enabled=true;
                 if(Input.GetKeyDown(KeyCode.E))
@@ -69,6 +80,11 @@ public class InteractionManager : MonoBehaviour
             if (objectHitByRaycast.GetComponentInParent<ThrowAbles>())
             
             {
+
+                if(hoveredThrowAble)
+                {
+                    hoveredThrowAble.GetComponent<Outline>().enabled = false;
+                }
                 hoveredThrowAble = objectHitByRaycast.gameObject.GetComponent<ThrowAbles>();
                 hoveredThrowAble.GetComponent<Outline>().enabled=true;
                 if(Input.GetKeyDown(KeyCode.E))

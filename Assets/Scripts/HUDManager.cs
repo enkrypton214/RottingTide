@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
@@ -45,8 +45,8 @@ public class HUDManager : MonoBehaviour
 
         if(!activeWeapon)
         {
-            magazineAmountUI.text="";
-            totalAmountUI.text="";
+            magazineAmountUI.text=" ";
+            totalAmountUI.text=" ";
             ammoTypeUI.sprite = emptySlot;
             activeWeaponUI.sprite = emptySlot;
             inActiveWeaponUI.sprite = emptySlot;
