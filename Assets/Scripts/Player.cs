@@ -99,6 +99,15 @@ public void TakeDamage(int damageAmount)
 
         //Dying animation
         GetComponentInChildren<Animator>().enabled = true;
+        foreach (Transform child in transform)
+{
+    if (child.CompareTag("WeaponSpawn"))
+    {
+        child.gameObject.SetActive(false);
+    }
+}
+        HUDManager.Instance.weaponHUD.SetActive(false);
+        HUDManager.Instance.middleDot.SetActive(false);
         playerHealthUI.gameObject.SetActive(false);
         GetComponent<ScreenBlackout>().StartFade();
 

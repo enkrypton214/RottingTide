@@ -6,8 +6,10 @@ public class DoorTrigger : MonoBehaviour
     public GameObject doorHinge;
 
     void OnTriggerEnter(Collider other)
-    {Debug.Log("TRIGGER ENTERED BY: " + other.name);
+    {   
+        SoundManager.Instance.backgroundMusicChannel.PlayOneShot(SoundManager.Instance.gameMusic);
         if (other.gameObject.CompareTag("Player"))
         doorHinge.GetComponent<Animator>().SetTrigger("DoorTrigger");
+        Destroy(gameObject);
     }
 }

@@ -1926,7 +1926,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.5
+  m_Speed: 10
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 2000
@@ -1964,6 +1964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c0f2b2c3cf750499487f95c28e91c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
 --- !u!114 &5655498966656617838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,7 +1978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieHand: {fileID: 722767745}
-  zombieDamage: 20
+  zombieDamage: 10
 --- !u!1 &7681663126129480386
 GameObject:
   m_ObjectHideFlags: 0

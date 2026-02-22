@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
         HP-=damageAmount;
         if (HP <= 0)
         {
+            isDead = true;
             int randomValue = Random.Range(0,2);
             if (randomValue==0)
             {
@@ -30,8 +31,8 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetTrigger("Die2");    
             }
-            isDead = true;
             SoundManager.Instance.zombieChannel.PlayOneShot(SoundManager.Instance.zombieDeath);
+            gameObject.GetComponent<CapsuleCollider>().enabled=false;
         }
         else
         {
@@ -45,9 +46,9 @@ public class Enemy : MonoBehaviour
         Gizmos.color=Color.red;
         Gizmos.DrawWireSphere(transform.position,3f);//Attack
         Gizmos.color=Color.blue;
-        Gizmos.DrawWireSphere(transform.position,46f);//StartChase
+        Gizmos.DrawWireSphere(transform.position,60f);//StartChase
         Gizmos.color=Color.green;
-        Gizmos.DrawWireSphere(transform.position,45f);//StopChase
+        Gizmos.DrawWireSphere(transform.position,61f);//StopChase
     }
 
 }

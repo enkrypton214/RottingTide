@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
-    bool isMoving;
+    // bool isMoving;
     private Vector3 lastPosition = new Vector3 (0,0,0);
     
     void Awake()
@@ -58,12 +58,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (lastPosition!= gameObject.transform.position && isGrounded==true)
         {
-            isMoving = true;
+            // isMoving = true;
             //laterUse
         }
         else
         {
-            isMoving=false;
+            // isMoving=false;
             //laterUse
         }
     }

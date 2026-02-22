@@ -9,6 +9,7 @@ TagManager:
   - Zombie
   - Waypoint
   - ZombieHand
+  - WeaponSpawn
   layers:
   - Default
   - TransparentFX

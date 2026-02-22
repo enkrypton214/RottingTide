@@ -6,10 +6,10 @@ using UnityEngine.AI;
 public class ZombiePatrollingState : StateMachineBehaviour
 {
     float timer;
-    public float patrollingTime=10f;
+    public float patrollingTime=5f;
     Transform player;
     NavMeshAgent agent;
-    public float detectionAreaRadius=20f;
+    public float detectionAreaRadius=60f;
     public float patrolSpeed = 2f;
     List<Transform> waypointList = new List<Transform>();
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

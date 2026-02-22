@@ -8,8 +8,8 @@ public class ZombieChasingState : StateMachineBehaviour
     
     Transform player;
     NavMeshAgent agent;
-    public float chaseSpeed=6f;
-    public float stopChasingDistance=21f;
+    public float chaseSpeed=12f;
+    public float stopChasingDistance=61f;
     public float startAttackingDistance=3f;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

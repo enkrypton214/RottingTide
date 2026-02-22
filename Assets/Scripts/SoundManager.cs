@@ -5,6 +5,10 @@ using static Weapon;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance {get;set;}
+
+    public AudioSource backgroundMusicChannel;
+    public AudioClip gameMusic;
+    
     
     public AudioSource shootingChannel;
     public AudioSource reloadChannel;

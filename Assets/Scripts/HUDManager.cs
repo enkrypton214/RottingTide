@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     public static HUDManager Instance {get;set;}
+    public GameObject weaponHUD;
     
     //Ammo
     public TextMeshProUGUI magazineAmountUI;
