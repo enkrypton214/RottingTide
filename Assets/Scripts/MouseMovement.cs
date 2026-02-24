@@ -8,8 +8,14 @@ public class MouseMovement : MonoBehaviour
 
     float xRotation = 0f;
     float yRotation = 0f;
+    void Awake()
+    {
+        
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+    }
     void Start()
     {
+        
         //lock cursor to make it invis
         Cursor.lockState = CursorLockMode.Locked;
     }

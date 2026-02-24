@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,8 @@ public class Enemy : MonoBehaviour
    private Animator animator;
    private NavMeshAgent navMeshAgent;
    public bool isDead;
+   public List<GameObject> drops;
+   private GameObject toDrop;
    
    private void Start()
     {
@@ -26,13 +29,17 @@ public class Enemy : MonoBehaviour
             if (randomValue==0)
             {
                 animator.SetTrigger("Die1");
+                Destroy(gameObject,4f);
             }
             else
             {
-                animator.SetTrigger("Die2");    
+                animator.SetTrigger("Die2");
+                Destroy(gameObject,4f);    
             }
             SoundManager.Instance.zombieChannel.PlayOneShot(SoundManager.Instance.zombieDeath);
-            gameObject.GetComponent<CapsuleCollider>().enabled=false;
+
+            DropItem();
+            
         }
         else
         {
@@ -50,5 +57,23 @@ public class Enemy : MonoBehaviour
         Gizmos.color=Color.green;
         Gizmos.DrawWireSphere(transform.position,61f);//StopChase
     }
+
+public void DropItem()
+{
+    CapsuleCollider col = GetComponent<CapsuleCollider>();
+    if(col != null) col.enabled = false;
+
+    float dropChance = 0.3f;
+    if (Random.value > dropChance) return;
+
+    if (drops.Count == 0) return;
+    int dropIndex = Random.Range(0, drops.Count);
+    GameObject toDrop = drops[dropIndex];
+
+    Vector3 spawnPos = transform.position + new Vector3(0,0.2f,0);
+    Instantiate(toDrop, spawnPos, Quaternion.identity);
+
+
+}
 
 }

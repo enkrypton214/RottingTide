@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    private Outline outline;
+    private ParticleSystem muzzleParticle;
+    private Camera cam;
+    private int weaponRenderLayer;
+    private int defaultLayer;
     public bool isActiveWeapon;
     public int weaponDamage;
     //Shooting
@@ -25,7 +30,7 @@ public class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public float bulletVelocity=30f;
-    public float bulletLifetime =2f;
+    public float bulletLifetime =.5f;
 
     //Reload
     public float reloadTime;
@@ -57,13 +62,20 @@ public class Weapon : MonoBehaviour
     public Camera MainCamera;
 
     private void Awake()
-    {
-        readyToShoot=true;
-        burstBulletsLeft=bulletPerBurst;
-        animator= GetComponent<Animator>();
-        bulletsLeft=magazineSize;
-        spreadIntensity= hipSpreadIntensity;
-    }
+{
+    readyToShoot = true;
+    burstBulletsLeft = bulletPerBurst;
+    animator = GetComponent<Animator>();
+    bulletsLeft = magazineSize;
+    spreadIntensity = hipSpreadIntensity;
+
+    outline = GetComponent<Outline>();
+    muzzleParticle = muzzleEffect.GetComponent<ParticleSystem>();
+    cam = Camera.main;
+
+    weaponRenderLayer = LayerMask.NameToLayer("WeaponRender");
+    defaultLayer = LayerMask.NameToLayer("Default");
+}
     void Update()
     {   if(isActiveWeapon){
         foreach (Transform child in transform)

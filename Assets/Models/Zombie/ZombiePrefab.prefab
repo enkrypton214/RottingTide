@@ -1965,6 +1965,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  drops:
+  - {fileID: 1641441103158562384, guid: 30f5feb5574abc34a8045a60216040b6, type: 3}
+  - {fileID: 5380265643215412009, guid: cccb1cd4315d3d7488f1a8f914b20e64, type: 3}
+  - {fileID: 5313268310491501293, guid: 5bd6392946c216844bfce1e9177e2309, type: 3}
 --- !u!114 &5655498966656617838
 MonoBehaviour:
   m_ObjectHideFlags: 0

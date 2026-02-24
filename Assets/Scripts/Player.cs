@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -119,5 +120,17 @@ public void TakeDamage(int damageAmount)
     {
         yield return new WaitForSeconds(1f);
         gameOverUI.gameObject.SetActive(true);
+        int waveSurvived = GlobalRefrences.Instance.WaveNumber;
+        if(waveSurvived>SaveLoadManager.Instance.LoadHighScore())
+        {
+        SaveLoadManager.Instance.SaveHighScore(waveSurvived-1);
+        }
+        StartCoroutine(ReturnToMainMenu());
+    }
+    private IEnumerator ReturnToMainMenu()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("MainMenu");
     }
 }
+

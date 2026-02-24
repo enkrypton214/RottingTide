@@ -4,32 +4,43 @@ using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
-    
+    private Camera cam;
     public static InteractionManager Instance {get;set;}
     public Weapon hoveredWeapon=null;
     public AmmoBox hoveredAmmoBox =null;
     public ThrowAbles hoveredThrowAble =null;
 
 
-     private void Awake()
+    private void Awake()
+{
+    if (Instance != null && Instance != this)
     {
-        if(Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
+        Destroy(gameObject);
     }
+    else
+    {
+        Instance = this;
+    }
+
+    cam = Camera.main; // cache camera
+}
 
     private void Update()
     {
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3 (0.5f,0.5f,0));
-        RaycastHit hit;
-        if(Physics.Raycast(ray,out hit))
-        {
-         GameObject objectHitByRaycast= hit.transform.gameObject;
+            if (hoveredWeapon != null && (hoveredWeapon.isActiveWeapon == false || !hoveredWeapon.gameObject.activeInHierarchy))
+            {
+                Outline outline = hoveredWeapon.GetComponentInParent<Outline>();
+                if (outline != null)
+                    outline.enabled = false;
+
+                hoveredWeapon = null;
+            }
+
+            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
+            if(Physics.Raycast(ray,out hit))
+            {
+            GameObject objectHitByRaycast= hit.transform.gameObject;
             if (objectHitByRaycast.GetComponentInParent<Weapon>() && objectHitByRaycast.GetComponentInParent<Weapon>().isActiveWeapon ==false)
             {
 
@@ -39,7 +50,12 @@ public class InteractionManager : MonoBehaviour
                 }
 
                 hoveredWeapon = objectHitByRaycast.gameObject.GetComponentInParent<Weapon>();
-                hoveredWeapon.GetComponentInParent<Outline>().enabled=true;
+                if (hoveredWeapon != null)
+                {
+                   Outline outline = hoveredWeapon.GetComponentInParent<Outline>();
+                   if (outline != null)
+                       outline.enabled = true;
+                }
                 if(Input.GetKeyDown(KeyCode.E))
                 {
                     WeaponManager.Instance.PickupWeapon(objectHitByRaycast.gameObject);
@@ -62,7 +78,11 @@ public class InteractionManager : MonoBehaviour
                 }
 
                 hoveredAmmoBox = objectHitByRaycast.gameObject.GetComponent<AmmoBox>();
-                hoveredAmmoBox.GetComponent<Outline>().enabled=true;
+                {
+                   Outline outline = hoveredAmmoBox.GetComponentInParent<Outline>();
+                   if (outline != null)
+                       outline.enabled = true;
+                }
                 if(Input.GetKeyDown(KeyCode.E))
                 {
                     WeaponManager.Instance.PickupAmmo(hoveredAmmoBox);
@@ -86,7 +106,11 @@ public class InteractionManager : MonoBehaviour
                     hoveredThrowAble.GetComponent<Outline>().enabled = false;
                 }
                 hoveredThrowAble = objectHitByRaycast.gameObject.GetComponent<ThrowAbles>();
-                hoveredThrowAble.GetComponent<Outline>().enabled=true;
+                {
+                   Outline outline = hoveredThrowAble.GetComponentInParent<Outline>();
+                   if (outline != null)
+                       outline.enabled = true;
+                }
                 if(Input.GetKeyDown(KeyCode.E))
                 {
                     WeaponManager.Instance.PickupThrowable(hoveredThrowAble);

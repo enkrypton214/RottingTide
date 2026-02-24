@@ -7,7 +7,7 @@ public class DoorTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {   
-        SoundManager.Instance.backgroundMusicChannel.PlayOneShot(SoundManager.Instance.gameMusic);
+        SoundManager.Instance.backgroundMusicChannel.Play();
         if (other.gameObject.CompareTag("Player"))
         doorHinge.GetComponent<Animator>().SetTrigger("DoorTrigger");
         Destroy(gameObject);
