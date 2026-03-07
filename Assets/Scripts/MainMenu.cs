@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
     public AudioSource mainMenuChannel;
     public AudioClip mainMenuMusic;
     public TextMeshProUGUI highScoreUI;
+    public GameObject Instructions;
+    public GameObject MainMenuCanvas;
     string newGameScene = "SampleScene";
 
     void Start()
@@ -21,6 +23,16 @@ public class MainMenu : MonoBehaviour
     public void StartNewGame()
     {   mainMenuChannel.Stop();
         SceneManager.LoadScene(newGameScene);
+    }
+    public void Help()
+    {
+        Instructions.SetActive(true);
+        MainMenuCanvas.SetActive(false);
+    }
+    public void ExitHelp()
+    {
+        Instructions.SetActive(false);
+        MainMenuCanvas.SetActive(true);
     }
 
     public void ExitApplication()
